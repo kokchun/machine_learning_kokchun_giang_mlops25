@@ -1,10 +1,18 @@
 from fastapi import FastAPI
-from data_processing import library_data
+from data_processing import library_data, Book
 
-books = library_data("library.json").books
+# list of elements that are pydantic models
+books: list[Book] = library_data("library.json").books
 
 app = FastAPI()
 
 @app.get("/books")
 async def read_books():
+    # can return a pydantic model because
+    # fastapi serializes it to json under the hood
     return books
+
+# path parameter
+@app.get("/book/{id}")
+async def read_book_by_id(id: int):
+    return [book for book in books if book.id == id]
