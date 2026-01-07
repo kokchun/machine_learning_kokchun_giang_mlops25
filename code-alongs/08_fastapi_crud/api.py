@@ -27,7 +27,14 @@ async def create_book(book_request: Book):
 
     books.append(new_book)
 
+    # to save/persist data
+    # ex logic for writing to json 
+    # ex open up database connection and INSERT row
+
     return new_book
+
+
+
 
 
 
