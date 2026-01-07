@@ -33,7 +33,15 @@ async def create_book(book_request: Book):
 
     return new_book
 
+# ----------------- UPDATE ------------------
 
+@app.put("/books/update_book")
+async def update_book(updated_book: Book):
+    for i, book in enumerate(books):
+        if book.id == updated_book.id:
+            books[i] = updated_book
+    
+    return updated_book
 
 
 
