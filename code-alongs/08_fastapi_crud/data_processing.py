@@ -32,20 +32,8 @@ class Library(BaseModel):
 def library_data(filename):
     json_data = read_json(filename)
 
-    Library(
-        name="Coolu libraru",
-        books=[
-            {
-                "author": "Douglas Adams",
-                "description": "A humorous science‑fiction adventure following an "
-                "ordinary man through absurd and unexpected cosmic "
-                "events.",
-                "id": 1,
-                "title": "The Hitchhiker's Guide to the Galaxy",
-                "year": 1979,
-            }
-        ],
-    )
+    # json data unpacks
+    # Library(name="Coolu library", books = [...])
     return Library(**json_data)
 
 
