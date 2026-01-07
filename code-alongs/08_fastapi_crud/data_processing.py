@@ -36,5 +36,6 @@ def library_data(filename):
     # Library(name="Coolu library", books = [...])
     return Library(**json_data)
 
-
-pprint(read_json("library.json"))
+if __name__ == "__main__":
+    # pydantic model
+    pprint(library_data("library.json").books)
