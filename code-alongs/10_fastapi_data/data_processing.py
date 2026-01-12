@@ -1,5 +1,7 @@
 from constants import DATA_PATH
 import pandas as pd 
+from pprint import pprint
+import json
 
 df = pd.read_csv(DATA_PATH / "Sales.csv")
 
@@ -12,9 +14,9 @@ class DataExplorer:
         return self._df
     
     def json_response(self):
-        json_data = self.df.to_json()
-        return json_data
+        json_data = self.df.to_json(orient="records")
+        return json.loads(json_data)
 
 if __name__ == "__main__":
     data_explorer = DataExplorer(limit=2)
-    print(data_explorer.json_response())
+    pprint(data_explorer.json_response())
