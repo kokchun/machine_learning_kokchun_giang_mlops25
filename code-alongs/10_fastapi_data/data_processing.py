@@ -10,7 +10,11 @@ class DataExplorer:
     @property
     def df(self):
         return self._df
+    
+    def json_response(self):
+        json_data = self.df.to_json()
+        return json_data
 
 if __name__ == "__main__":
-    data_explorer = DataExplorer(limit=5)
-    print(data_explorer.df)
+    data_explorer = DataExplorer(limit=2)
+    print(data_explorer.json_response())
