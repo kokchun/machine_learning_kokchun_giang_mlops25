@@ -16,5 +16,5 @@ async def read_summary_data():
 @app.get("/kpis")
 async def read_kpis_by_country(country: str):
     data_explorer = DataExplorer()
-    return data_explorer.kpis(country=country).json_response()
+    return data_explorer.kpis(country=country)
 
