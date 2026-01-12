@@ -25,12 +25,13 @@ class DataExplorer:
         return self  # allows for method chaining
 
     def kpis(self, country: str):
-        df_by_country = df.query("Country == @country")
+        df_by_country = df.query("Country.str.casefold() == @country.casefold()")
 
         return {
             "total_profit": str(df_by_country["Profit"].sum()),
             "total_cost": str(df_by_country["Cost"].sum()),
             "number_of_purchases": str(len(df_by_country)),
+            # more kpis
         }
 
     def json_response(self):
