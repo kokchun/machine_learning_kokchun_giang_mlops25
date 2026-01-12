@@ -16,7 +16,7 @@ class DataExplorer:
     
     def summary(self):
         self._df = self._df_full.describe()
-
+        return self # allows for method chaining
 
     def json_response(self):
         json_data = self.df.to_json(orient="records")
@@ -24,4 +24,4 @@ class DataExplorer:
 
 if __name__ == "__main__":
     data_explorer = DataExplorer(limit=2)
-    pprint(data_explorer.json_response())
+    pprint(data_explorer.summary().json_response())
