@@ -8,6 +8,8 @@ df = pd.read_csv(DATA_PATH / "Sales.csv")
 
 class DataExplorer:
     def __init__(self, limit=100):
+        # _ private by convention
+        # OK to access within the class, but not from outside
         self._df = df.head(limit)
         self._df_full = df
 
