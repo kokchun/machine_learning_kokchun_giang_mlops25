@@ -34,4 +34,5 @@ if submitted:
     }
 
     response = httpx.post(URL, json=payload)
-    st.write(response)
+    prediction = response.json().get("predicted_flower")
+    st.markdown(f"**Predicted flower:** {prediction}")
