@@ -1,7 +1,8 @@
 import streamlit as st
 import httpx
+import pandas as pd 
 
-URL = "http://127.0.0.1:8000/api/predict"
+URL = "http://127.0.0.1:8000"
 
 st.markdown("# Predict iris flower")
 st.markdown("App to predict an Iris flower, take some measurement on your flower")
@@ -33,6 +34,14 @@ if submitted:
         "petal_width": petal_width,
     }
 
-    response = httpx.post(URL, json=payload)
+    response = httpx.post(f"{URL}/api/predict", json=payload)
     prediction = response.json().get("predicted_flower")
     st.markdown(f"**Predicted flower:** {prediction}")
+
+
+st.markdown("## Raw data")
+
+data = httpx.get(f"{URL}/api/data").json()
+df = pd.DataFrame(data)
+
+st.dataframe(df)
